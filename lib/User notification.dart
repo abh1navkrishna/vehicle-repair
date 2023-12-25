@@ -14,11 +14,15 @@ class _UsernotiiiState extends State<Usernotiii> {
     return Scaffold(
        backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color(0xffCFE2FF),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.arrow_back_ios),
+            InkWell(onTap: () {
+              Navigator.pop(context);
+            },
+              child: Icon(Icons.arrow_back_ios)),
             Text(
               'Notification',
               style: GoogleFonts.poppins(

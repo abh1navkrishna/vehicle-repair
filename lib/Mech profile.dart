@@ -17,7 +17,10 @@ class _MechprofileeeState extends State<Mechprofileee> {
           padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
           child: Row(
             children: [
-              Icon(Icons.arrow_back_ios),
+              InkWell(onTap: () {
+                Navigator.pop(context);
+              },
+                child: Icon(Icons.arrow_back_ios)),
             ],
           ),
         ),
@@ -271,21 +274,25 @@ class _MechprofileeeState extends State<Mechprofileee> {
 
         Padding(
           padding: const EdgeInsets.only(left: 100,right: 100,top: 50,bottom: 100),
-          child: Container(
-            width: 200,
-            height: 50,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color(0xff2357D9)),
-                child: Center(
-                    child: Text(
-                      'Submit',
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          color: Colors.white),
+          child: InkWell(onTap: () {
+            Navigator.pop(context);
+          },
+            child: Container(
+              width: 200,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff2357D9)),
+                  child: Center(
+                      child: Text(
+                        'Submit',
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.white),
+                      ),
                     ),
-                  ),
+            ),
           ),
         )
       ]),

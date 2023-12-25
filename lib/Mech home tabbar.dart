@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vehicle_repair/Mech%20accepted.dart';
+import 'package:vehicle_repair/Mech%20edit%20profile.dart';
+import 'package:vehicle_repair/Mech%20notification.dart';
 import 'package:vehicle_repair/Mech%20request.dart';
 
 class Mechtabbarrr extends StatefulWidget {
@@ -13,27 +15,43 @@ class Mechtabbarrr extends StatefulWidget {
 class _MechtabbarrrState extends State<Mechtabbarrr> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: 2, child: Scaffold(
-      body: SafeArea(
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 30,right: 30,top: 5),
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset('assets/Ellipse 9.png'),
-                Image.asset('assets/notification 1.png')
-              ],
-            ),
-          ),
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          body: SafeArea(
+            child: Column(children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return Mecheditprofileee();
+                    },));
+                    },
+                      child: Image.asset('assets/Ellipse 9.png')),
+                    InkWell(onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return Mechnotiii();
+                      },));
+                    },
+                      child: Image.asset('assets/notification 1.png'))
+                  ],
+                ),
+              ),
 
 //================================================================================================================================
 
-   Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20,top: 30,bottom: 30),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20, right: 20, top: 30, bottom: 30),
                 child: Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xffE8F1FF),),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xffE8F1FF),
+                  ),
                   child: TabBar(
-                    
                     tabs: [
                       Tab(
                         child: Text(
@@ -53,7 +71,6 @@ class _MechtabbarrrState extends State<Mechtabbarrr> {
                           ),
                         ),
                       ),
-                      
                     ],
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -62,15 +79,16 @@ class _MechtabbarrrState extends State<Mechtabbarrr> {
                     labelColor: Colors.black,
                     unselectedLabelColor: Color(0xff150B3D),
                     indicatorSize: TabBarIndicatorSize.tab,
-                    
                   ),
                 ),
               ),
-            Expanded(child: TabBarView(children: [Mechrequesttt(),Mechaccepteddd(),]))
-
-
-        ]),
-      ),
-    ));
+              Expanded(
+                  child: TabBarView(children: [
+                Mechrequesttt(),
+                Mechaccepteddd(),
+              ]))
+            ]),
+          ),
+        ));
   }
 }

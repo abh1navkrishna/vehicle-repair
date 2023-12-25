@@ -14,7 +14,11 @@ class _AdminaddnotiiiState extends State<Adminaddnotiii> {
     return Scaffold(
       backgroundColor: Color(0xffCFE2FF),
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios),
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.arrow_back_ios)),
         backgroundColor: Color(0xffCFE2FF),
       ),
       body: ListView(
@@ -60,17 +64,18 @@ class _AdminaddnotiiiState extends State<Adminaddnotiii> {
           Padding(
             padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
             child: Container(
-                height: 380,
-                color: Colors.white,
-                child:TextFormField(
-                  decoration: InputDecoration(
-                      hintText: '    Content . . . .',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),),
+              height: 380,
+              color: Colors.white,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: '    Content . . . .',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
+              ),
+            ),
           ),
 
           //=======================================================================================================================================================
@@ -80,19 +85,24 @@ class _AdminaddnotiiiState extends State<Adminaddnotiii> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 200,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff2357D9)),
-                  child: Center(
-                    child: Text(
-                      'Submit',
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          color: Colors.white),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 200,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xff2357D9)),
+                    child: Center(
+                      child: Text(
+                        'Submit',
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),

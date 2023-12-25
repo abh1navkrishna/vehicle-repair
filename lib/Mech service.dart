@@ -14,6 +14,7 @@ class _MechserviceeeState extends State<Mechserviceee> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color(0xffCFE2FF),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -220,19 +221,23 @@ class _MechserviceeeState extends State<Mechserviceee> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 80),
-                      child: Container(
-                        width: 150,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xff2357D9)),
-                        child: Center(
-                          child: Text(
-                            'Add',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16,
-                                color: Colors.white),
+                      child: InkWell(onTap: () {
+                        Navigator.pop(context);
+                      },
+                        child: Container(
+                          width: 150,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color(0xff2357D9)),
+                          child: Center(
+                            child: Text(
+                              'Add',
+                              style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                       ),

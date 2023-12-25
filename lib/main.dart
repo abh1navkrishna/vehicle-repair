@@ -5,6 +5,7 @@ import 'package:vehicle_repair/Admin%20home.dart';
 import 'package:vehicle_repair/Admin%20login.dart';
 import 'package:vehicle_repair/Admin%20mechanic%202.dart';
 import 'package:vehicle_repair/Admin%20mechanic.dart';
+import 'package:vehicle_repair/Admin%20navigation%20bar.dart';
 import 'package:vehicle_repair/Admin%20notification.dart';
 import 'package:vehicle_repair/Admin%20payment.dart';
 import 'package:vehicle_repair/Admin%20user%202.dart';
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Mechnavigationbarrr()
+      home: UserMechaniclisttt()
     );
   }
 }

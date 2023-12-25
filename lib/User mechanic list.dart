@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vehicle_repair/Mech%20accepted.dart';
 import 'package:vehicle_repair/Mech%20request.dart';
 import 'package:vehicle_repair/User%20mechanic%20l.dart';
+import 'package:vehicle_repair/User%20notification.dart';
+import 'package:vehicle_repair/User%20profile.dart';
 import 'package:vehicle_repair/User%20request%20list.dart';
 
 class UserMechaniclisttt extends StatefulWidget {
@@ -23,7 +25,12 @@ class _UserMechaniclistttState extends State<UserMechaniclisttt> {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset('assets/Ellipse 1.png'),
+                  InkWell(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return Userprofileee();
+                    },));
+                  },
+                    child: Image.asset('assets/Ellipse 1.png')),
                   Container(
                     width: 211,
                     height: 30,
@@ -44,7 +51,12 @@ class _UserMechaniclistttState extends State<UserMechaniclisttt> {
                           border: InputBorder.none),
                     ),
                   ),
-                  Image.asset('assets/notification 1.png')
+                  InkWell(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return Usernotiii();
+                    },));
+                  },
+                    child: Image.asset('assets/notification 1.png'))
                 ],
               )),
           body: SafeArea(
@@ -58,35 +70,41 @@ class _UserMechaniclistttState extends State<UserMechaniclisttt> {
             ],
           )),
           bottomNavigationBar: BottomAppBar(
+            height: 80,
             surfaceTintColor: Colors.white,
-            child: TabBar(
-              tabs: [
-                Tab(
-                  child: Text(
-                    'Mechanic',
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Color(0xffE8F1FF)),
+              child: TabBar(
+                tabs: [
+                  Tab(
+                    child: Text(
+                      'Mechanic',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
-                ),
-                Tab(
-                  child: Text(
-                    'Request',
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                  Tab(
+                    child: Text(
+                      'Request',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
+                ],
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xff2357D9),
                 ),
-              ],
-              indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color(0xff2357D9),
+                labelColor: Colors.white,
+                unselectedLabelColor: Color(0xff150B3D),
+                indicatorSize: TabBarIndicatorSize.tab,
               ),
-              labelColor: Colors.white,
-              unselectedLabelColor: Color(0xff150B3D),
-              indicatorSize: TabBarIndicatorSize.tab,
             ),
           ),
         ));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Mechratinggg extends StatefulWidget {
@@ -13,6 +14,7 @@ class _MechratingggState extends State<Mechratinggg> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
           backgroundColor: Color(0xffCFE2FF),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,30 +121,13 @@ class _MechratingggState extends State<Mechratinggg> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.star,
-                            size: 15,
-                            color: Colors.yellow[700],
-                          ),
-                          Icon(
-                            Icons.star,
-                            size: 15,
-                            color: Colors.yellow[700],
-                          ),
-                          Icon(
-                            Icons.star,
-                            size: 15,
-                            color: Colors.yellow[700],
-                          ),
-                          Icon(
-                            Icons.star,
-                            size: 15,
-                            color: Colors.yellow[700],
-                          ),
-                          Icon(
-                            Icons.star_border,
-                            size: 13,
-                          )
+                          RatingBar.builder(
+                              initialRating: 4,
+                              itemCount: 5,
+                              itemSize: 15,
+                              direction: Axis.horizontal,
+                              itemBuilder: (Context, _) => Icon(Icons.star,color: Colors.amber,),
+                              onRatingUpdate: (rating) {}),
                         ],
                       ),
                       SizedBox(

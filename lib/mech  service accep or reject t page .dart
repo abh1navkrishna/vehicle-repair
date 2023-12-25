@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vehicle_repair/Mech%20status%20reject.dart';
+import 'package:vehicle_repair/mech%20status%20completed.dart';
 
 class Acceotorrejecttt extends StatefulWidget {
   const Acceotorrejecttt({super.key});
@@ -18,7 +20,10 @@ class _AcceotorrejectttState extends State<Acceotorrejecttt> {
             padding: const EdgeInsets.only(left: 20, top: 5),
             child: Row(
               children: [
-                Icon(Icons.arrow_back_ios),
+                InkWell(onTap: () {
+                  Navigator.pop(context);
+                },
+                  child: Icon(Icons.arrow_back_ios)),
               ],
             ),
           ),
@@ -155,39 +160,51 @@ class _AcceotorrejectttState extends State<Acceotorrejecttt> {
                         SizedBox(height: 50,),
                         Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              width: 110,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Color(0xff49CD6E)),
-                                  child: Center(
-                                    child:  Text(
-                                  'Accept',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
-                                ),
+                            InkWell(onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return Mechstatuscmplttt();
+                              },));
+                            },
+                              child: Container(
+                                width: 110,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Color(0xff49CD6E)),
+                                    child: Center(
+                                      child:  Text(
+                                    'Accept',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
                                   ),
+                                    ),
+                              ),
                             ),
 
-                             Container(
-                              width: 110,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Color(0xffCD4949)),
-                                  child: Center(
-                                    child:  Text(
-                                  'Reject',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
-                                ),
+                             InkWell(onTap: () {
+                               Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                 return Mechstatusrejecttt();
+                               },));
+                             },
+                               child: Container(
+                                width: 110,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Color(0xffCD4949)),
+                                    child: Center(
+                                      child:  Text(
+                                    'Reject',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
                                   ),
-                            )
+                                    ),
+                                                         ),
+                             )
                           ],
                         )
                       ],

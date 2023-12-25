@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vehicle_repair/Mech%20botton%20navigation%20bar.dart';
-import 'package:vehicle_repair/Mech%20home%20tabbar.dart';
 
-class Mechstatuscmplttt extends StatefulWidget {
-  const Mechstatuscmplttt({super.key});
+class Mechstatusrejecttt extends StatefulWidget {
+  const Mechstatusrejecttt({super.key});
 
   @override
-  State<Mechstatuscmplttt> createState() => _MechstatuscmpltttState();
+  State<Mechstatusrejecttt> createState() => _MechstatusrejectttState();
 }
 
-class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
-  // String? gender;
-
+class _MechstatusrejectttState extends State<Mechstatusrejecttt> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Padding(
+      body: ListView(children: [
+         Padding(
             padding: const EdgeInsets.only(
               left: 20,
               top: 5,
@@ -105,8 +101,7 @@ class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
                   fontSize: 20,
                   color: Colors.black),
             ),
-          ),
-          SizedBox(
+          ),  SizedBox(
             height: 10,
           ),
 
@@ -116,7 +111,7 @@ class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.radio_button_on,color: Color(0xff2357D9),),
+                    Icon(Icons.circle_outlined,color: Color(0xff2357D9),),
                      Text(
                 '  Completed',
                 style: GoogleFonts.poppins(
@@ -128,7 +123,7 @@ class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
                 ),
                  Row(
                   children: [
-                    Icon(Icons.circle_outlined,color: Color(0xff2357D9),),
+                    Icon(Icons.radio_button_on,color: Color(0xff2357D9),),
                      Text(
                 '  Not Completed',
                 style: GoogleFonts.poppins(
@@ -141,55 +136,10 @@ class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
               ],
             ),
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //   children: [
-          //     Row(
-          //       children: [
-          //         Radio(
-          //           value: 'complet',
-          //           groupValue: gender,
-          //           onChanged: (value) {
-          //             setState(() {
-          //               gender = value;
-          //             });
-          //           },
-          //         ),
-          //         Text(
-          //           'Completed ',
-          //           style: GoogleFonts.poppins(
-          //               fontWeight: FontWeight.w400,
-          //               fontSize: 14,
-          //               color: Colors.black),
-          //         ),
-          //       ],
-          //     ),
-          //     Row(
-          //       children: [
-          //         Radio(
-          //           value: 'not',
-          //           groupValue: gender,
-          //           onChanged: (value) {
-          //             setState(() {
-          //               gender = value;
-          //             });
-          //           },
-          //         ),
-          //         Text(
-          //           'Not Completed',
-          //           style: GoogleFonts.poppins(
-          //               fontWeight: FontWeight.w400,
-          //               fontSize: 14,
-          //               color: Colors.black),
-          //         ),
-          //       ],
-          //     )
-          //   ],
-          // ),
-          Padding(
+           Padding(
             padding: const EdgeInsets.only(left: 40, top: 40),
             child: Text(
-              'Amound',
+              'Reject reason',
               style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
@@ -197,29 +147,17 @@ class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 85.5, right: 85.5, top: 50),
+            padding: const EdgeInsets.only(left: 42.5, right: 42.5, top: 20),
             child: Container(
-              height: 43,
+              height: 146,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.circular(12)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.currency_rupee),
-                  Text(
-                    '  2000/-',
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 22,
-                        color: Colors.black),
-                  ),
-                ],
-              ),
+             
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left:71,right: 71,top: 50),
+            padding: const EdgeInsets.only(left:71,right: 71,top: 20),
             child: InkWell(onTap: () {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                 return Mechnavigationbarrr();
@@ -242,8 +180,7 @@ class _MechstatuscmpltttState extends State<Mechstatuscmplttt> {
               ),
             ),
           )
-        ],
-      ),
+      ]),
     );
   }
 }

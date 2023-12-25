@@ -86,6 +86,8 @@ flutter:
     - assets/check 1.png
     - assets/plumber 1.png
     - assets/repair-tool 1.png
+    - assets/wallet.png
+    - assets/conversation.png
  
 
   # An image asset can refer to one or more resolution-specific "variants", see

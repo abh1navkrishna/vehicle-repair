@@ -20,7 +20,10 @@ class _UserprofileeeState extends State<Userprofileee> {
           ),
           child: Row(
             children: [
-              Icon(Icons.arrow_back_ios),
+              InkWell(onTap: () {
+                Navigator.pop(context);
+              },
+                child: Icon(Icons.arrow_back_ios)),
             ],
           ),
         ),
@@ -143,21 +146,25 @@ class _UserprofileeeState extends State<Userprofileee> {
         surfaceTintColor: Colors.white,
           child: Padding(
             padding: const EdgeInsets.only(left: 95,right: 95),
-            child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10), color: Color(0xfff2357D9)),
-              child: Center(
-                child: 
-                 Text(
-              'Done',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 19,
-                  color: Colors.white),
-            ),
+            child: InkWell(onTap: () {
+              Navigator.pop(context)
+;            },
+              child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: Color(0xfff2357D9)),
+                child: Center(
+                  child: 
+                   Text(
+                'Done',
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 19,
+                    color: Colors.white),
               ),
                 ),
+                  ),
+            ),
           )),
     );
   }

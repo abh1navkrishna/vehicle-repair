@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Adminmechanic222 extends StatefulWidget {
@@ -17,7 +18,11 @@ class _Adminmechanic222State extends State<Adminmechanic222> {
           padding: const EdgeInsets.only(left: 20, top: 5),
           child: Row(
             children: [
-              Icon(Icons.arrow_back_ios),
+              InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back_ios)),
             ],
           ),
         ),
@@ -42,299 +47,279 @@ class _Adminmechanic222State extends State<Adminmechanic222> {
           ],
         ),
 
-SizedBox(height: 20,),
-
-        Row(mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.star,
-              color: Colors.yellow[700],
-            ),
-            SizedBox(width: 5,),
-             Icon(
-              Icons.star,
-              color: Colors.yellow[700],
-            ),
-            Icon(
-              Icons.star,
-              color: Colors.yellow[700],
-            ),
-            SizedBox(width: 5,),
-            Icon(
-              Icons.star,
-              color: Colors.yellow[700],
-            ),
-            SizedBox(width: 5,),
-            Icon(Icons.star_border)
-            
-          ],
+        SizedBox(
+          height: 10,
         ),
-        SizedBox(height: 7,),
 
         Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Location',
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
-                    color: Colors.black),
-              ),
-            ],
-          ),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RatingBar.builder(
+                initialRating: 4,
+                itemCount: 5,
+                itemSize: 30,
+                direction: Axis.horizontal,
+                itemBuilder: (Context, _) => Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                onRatingUpdate: (rating) {}),
+          ],
+        ),
+        SizedBox(
+          height: 7,
+        ),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Location',
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  color: Colors.black),
+            ),
+          ],
+        ),
 
 //=========================================================================================================================================
 
- Padding(
-            padding: const EdgeInsets.only(left: 40,top: 20),
-            child: Text(
-              ' Mech Username',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 20),
+          child: Text(
+            ' Mech Username',
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           ),
+        ),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffE8F1FF)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'Username',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffE8F1FF)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Username',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
               ),
             ),
           ),
+        ),
 
 //================================================================================================================================
 
-
- Padding(
-            padding: const EdgeInsets.only(left: 40,top: 20),
-            child: Text(
-              '  Phone number',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 20),
+          child: Text(
+            '  Phone number',
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           ),
+        ),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffE8F1FF)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: '000000',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffE8F1FF)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: '000000',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
               ),
             ),
           ),
+        ),
 
-          SizedBox(
-            height: 20,
-          ),
+        SizedBox(
+          height: 20,
+        ),
 
 //================================================================================================================================
 
-
-
- Padding(
-            padding: const EdgeInsets.only(left: 40,top: 0),
-            child: Text(
-              ' email adders',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 0),
+          child: Text(
+            ' email adders',
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           ),
+        ),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffE8F1FF)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'Example@email.com',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffE8F1FF)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Example@email.com',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
               ),
             ),
           ),
+        ),
 
-          SizedBox(
-            height: 20,
-          ),
+        SizedBox(
+          height: 20,
+        ),
 
 //================================================================================================================================
 
-
- Padding(
-            padding: const EdgeInsets.only(left: 40,top: 0),
-            child: Text(
-              ' work experience  ',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 0),
+          child: Text(
+            ' work experience  ',
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           ),
+        ),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffE8F1FF)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'experience',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffE8F1FF)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'experience',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
               ),
             ),
           ),
+        ),
 
-          SizedBox(
-            height: 20,
-          ),
+        SizedBox(
+          height: 20,
+        ),
 
 //================================================================================================================================
 
-
- Padding(
-            padding: const EdgeInsets.only(left: 40,top: 0),
-            child: Text(
-              ' work shop name  ',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 0),
+          child: Text(
+            ' work shop name  ',
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           ),
+        ),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffE8F1FF)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: ' shop name   ',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffE8F1FF)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: ' shop name   ',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
               ),
             ),
           ),
+        ),
 
-          SizedBox(
-            height: 20,
-          ),
+        SizedBox(
+          height: 20,
+        ),
 
 //================================================================================================================================
 
-
- Padding(
-            padding: const EdgeInsets.only(left: 40,top: 0),
-            child: Text(
-              '  your location   ',
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 0),
+          child: Text(
+            '  your location   ',
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),
           ),
+        ),
 
-          Padding(
-            padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffE8F1FF)),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: 'Enter your location   ',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                ),
+        Padding(
+          padding: const EdgeInsets.only(left: 40, top: 5, right: 40),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffE8F1FF)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Enter your location   ',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xff7D7D7D)),
+                    border: InputBorder.none),
               ),
             ),
           ),
+        ),
 
-          SizedBox(
-            height: 20,
-          ),
+        SizedBox(
+          height: 20,
+        ),
 
 //================================================================================================================================
 
-
-  Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10,top: 30,bottom: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
+        Padding(
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, top: 30, bottom: 50),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
                   width: 142,
                   height: 50,
                   decoration: BoxDecoration(
@@ -350,7 +335,12 @@ SizedBox(height: 20,),
                     ),
                   ),
                 ),
-                Container(
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
                   width: 142,
                   height: 50,
                   decoration: BoxDecoration(
@@ -366,12 +356,10 @@ SizedBox(height: 20,),
                     ),
                   ),
                 ),
-              ],
-            ),
-          )
-
-
-
+              ),
+            ],
+          ),
+        )
       ]),
     );
   }
