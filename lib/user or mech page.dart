@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vehicle_repair/Admin%20login.dart';
 import 'package:vehicle_repair/Mech%20login.dart';
+import 'package:vehicle_repair/User%20login.dart';
 
 class Usermechpageee extends StatefulWidget {
   const Usermechpageee({super.key});
@@ -67,18 +69,24 @@ class _UsermechpageeeState extends State<Usermechpageee> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, top: 30),
-            child: Container(
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.white),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, top: 13),
-                child: Text(
-                  'User',
-                  style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Colors.black),
+            child: InkWell(onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Userloginnn();
+              },));
+            },
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10), color: Colors.white),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 13),
+                  child: Text(
+                    'User',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Colors.black),
+                  ),
                 ),
               ),
             ),
@@ -86,12 +94,18 @@ class _UsermechpageeeState extends State<Usermechpageee> {
           SizedBox(height: 30,),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Admin Login',
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22,
-                    color: Color(0xff2357D9)),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Adminloginnn();
+                },));
+              },
+                child: Text(
+                  'Admin Login',
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 22,
+                      color: Color(0xff2357D9)),
+                ),
               ),
             ],
           ),

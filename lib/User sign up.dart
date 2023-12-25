@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vehicle_repair/User%20mechanic%20list.dart';
 
 class Usersignuppp extends StatefulWidget {
   const Usersignuppp({super.key});
@@ -185,19 +186,25 @@ class _UsersignupppState extends State<Usersignuppp> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 200,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff2357D9)),
-                    child: Center(
-                      child: Text(
-                        'SIGN UP',
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Colors.white),
+                  InkWell(onTap: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                      return UserMechaniclisttt();
+                    },));
+                  },
+                    child: Container(
+                      width: 200,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff2357D9)),
+                      child: Center(
+                        child: Text(
+                          'SIGN UP',
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vehicle_repair/Mech%20botton%20navigation%20bar.dart';
 
 class Mechsignuppp extends StatefulWidget {
   const Mechsignuppp({super.key});
@@ -252,19 +253,25 @@ class _MechsignupppState extends State<Mechsignuppp> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 200,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff2357D9)),
-                    child: Center(
-                      child: Text(
-                        'SIGN UP',
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Colors.white),
+                  InkWell(onTap: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                      return Mechnavigationbarrr();
+                    },));
+                  },
+                    child: Container(
+                      width: 200,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff2357D9)),
+                      child: Center(
+                        child: Text(
+                          'SIGN UP',
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

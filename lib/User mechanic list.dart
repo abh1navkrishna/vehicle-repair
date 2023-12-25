@@ -21,6 +21,7 @@ class _UserMechaniclistttState extends State<UserMechaniclisttt> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
               backgroundColor: Color(0xffCFE2FF),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
