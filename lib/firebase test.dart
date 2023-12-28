@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vehicle_repair/Admin%20login.dart';
+import 'package:vehicle_repair/firebase%20dataview.dart';
 
 class Firebaseee extends StatefulWidget {
   const Firebaseee({super.key});
@@ -9,6 +12,20 @@ class Firebaseee extends StatefulWidget {
 }
 
 class _FirebaseeeState extends State<Firebaseee> {
+  TextEditingController text1 = TextEditingController();
+  TextEditingController text2 = TextEditingController();
+  TextEditingController text3 = TextEditingController();
+
+  void uploaddata() {
+    FirebaseFirestore.instance
+        .collection('users')
+        .add({'text1': text1.text, 'text2': text2.text, 'text3': text3.text}).then((value){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Adminloginnn();
+          },));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +42,7 @@ class _FirebaseeeState extends State<Firebaseee> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextFormField(
+                  controller: text1,
                   decoration: InputDecoration(
                       hintText: 'Text 1',
                       hintStyle: GoogleFonts.poppins(
@@ -49,6 +67,7 @@ class _FirebaseeeState extends State<Firebaseee> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextFormField(
+                  controller: text2,
                   decoration: InputDecoration(
                       hintText: 'Text 2',
                       hintStyle: GoogleFonts.poppins(
@@ -72,6 +91,7 @@ class _FirebaseeeState extends State<Firebaseee> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextFormField(
+                  controller: text3,
                   decoration: InputDecoration(
                       hintText: 'Text 3',
                       hintStyle: GoogleFonts.poppins(
@@ -109,7 +129,15 @@ class _FirebaseeeState extends State<Firebaseee> {
                 ),
               ),
             ],
-          )
+          ),
+          ElevatedButton(onPressed: () async{
+            await FirebaseFirestore.instance.collection('users').get().then((snapshot){
+              List <QueryDocumentSnapshot> doclist=snapshot.docs;
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Dataviewww(docs:doclist);
+              },));
+            });
+          }, child: Text("View"))
         ],
       ),
     );
