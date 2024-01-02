@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vehicle_repair/Admin%20user%202.dart';
@@ -14,69 +16,76 @@ class _AdminuserrrState extends State<Adminuserrr> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffE8F1FF),
-      body: ListView.builder(
-        itemBuilder: ((context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            child: InkWell(onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Adminuser222();
-              },));
-            },
-              child: Container(
-                width: double.infinity,
-                height: 100,
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25),
-                      child: Image.asset('assets/Rectangle 13.png'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 44),
-                      child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+      body: FutureBuilder(
+          future: FirebaseFirestore.instance.collection("usersignup").get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            }
+            final user = snapshot.data?.docs ?? [];
+
+            return ListView.builder(
+              itemBuilder: ((context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Adminuser222();
+                        },
+                      ));
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 100,
+                      color: Colors.white,
+                      child: Row(
                         children: [
-                          Text(
-                            'Name',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: Colors.black),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25),
+                            child: Image.asset('assets/Rectangle 13.png'),
                           ),
-                          Text(
-                            'Location',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: Colors.black),
-                          ),
-                           Text(
-                            'Mobile Number',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: Colors.black),
-                          ),
-                           Text(
-                            'Email',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: Colors.black),
-                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 44),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  user[index]['usernamr']
+                                   
+      
+                                    ),
+                                Text(
+                                   user[index]['password']
+                                ),
+                                Text(
+                                  user[index]['phone number']
+                                ),
+                                Text(
+                                   user[index]['Email']
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          );
-        }),
-        itemCount: 10,
-      ),
+                    ),
+                  ),
+                );
+              }),
+              itemCount: user.length,
+            );
+          }),
     );
   }
 }

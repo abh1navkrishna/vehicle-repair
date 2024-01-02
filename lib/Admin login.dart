@@ -25,7 +25,8 @@ class _AdminloginnnState extends State<Adminloginnn> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 50),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/tow 1.png'),
                 ],
@@ -58,25 +59,27 @@ class _AdminloginnnState extends State<Adminloginnn> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 51, right: 51, top: 10),
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      hintText: '    Username',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Enter Username";
-                    }
-                  },
-                ),
+              child: TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: 'Enter user name',
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff878787)),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0xff668796)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0xff668796)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    border: const OutlineInputBorder()),
               ),
             ),
 
@@ -94,42 +97,40 @@ class _AdminloginnnState extends State<Adminloginnn> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 51, right: 51, top: 10),
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white),
-                child: TextFormField(
-                  controller: passController,
-                  obscureText: passToggle,
-                  decoration: InputDecoration(
-                      hintText: '    Enter Password',
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff7D7D7D)),
-                      border: InputBorder.none,
-                      suffix: InkWell(
-                        onTap: () {
-                          setState(() {
-                            passToggle = !passToggle;
-                          });
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Icon(passToggle
-                              ? Icons.visibility
-                              : Icons.visibility_off),
-                        ),
-                      )),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Entee Password";
-                    } else if (passController.text.length < 6) {
-                      return "Password Length Should not be more than 6 characters";
-                    }
-                  },
-                ),
+              child: TextFormField(
+                controller: passController,
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: 'Enter Password',
+                    suffix: InkWell(
+                      onTap: () {
+                        setState(() {
+                          passToggle = !passToggle;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Icon(passToggle
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
+                    ),
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff878787)),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0xff668796)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0xff668796)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    border: const OutlineInputBorder()),
               ),
             ),
             Padding(
@@ -137,30 +138,32 @@ class _AdminloginnnState extends State<Adminloginnn> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(onTap: () {
-                    if (_formfield.currentState!.validate()) {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                        return Adminavigationnn();
-                      },));
-                      emailController.clear();
-                      passController.clear();
-                    }
-
-                  },
+                  InkWell(  onTap: () {
+                      if (emailController.text == 'aaa' &&
+                          passController.text == 'sss') {
+                            print("click");
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Adminavigationnn();
+                          },
+                        ));
+                      }
+                    },
                     child: Container(
                       width: 200,
                       height: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Color(0xff2357D9)),
-                      child: Center(child:
-                      Text(
-                        'LOGIN',
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Colors.white),
-                      ),),
+                      child: Center(
+                        child: Text(
+                          'LOGIN',
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Colors.white),
+                        ),
+                      ),
                     ),
                   ),
                 ],

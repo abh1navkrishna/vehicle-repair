@@ -237,3 +237,20 @@ class _Adminuser222State extends State<Adminuser222> {
     );
   }
 }
+
+
+//  future: FirebaseFirestore.instance.collection('admin').get(),
+//         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+//           if (snapshot.connectionState == ConnectionState.waiting) {
+//             return Center(
+//               child: CircularProgressIndicator(),
+//             );
+//           }
+
+//           if (snapshot.hasError) {
+//             return Center(
+//               child: Text('Error:${snapshot.error}'),
+//             );
+//           }
+
+//           final admin = snapshot.data?.docs ?? [];
