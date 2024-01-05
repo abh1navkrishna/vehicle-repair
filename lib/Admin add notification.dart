@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vehicle_repair/Admin%20notification.dart';
 
 class Adminaddnotiii extends StatefulWidget {
   const Adminaddnotiii({super.key});
@@ -9,6 +12,21 @@ class Adminaddnotiii extends StatefulWidget {
 }
 
 class _AdminaddnotiiiState extends State<Adminaddnotiii> {
+
+var entermatter=TextEditingController();
+var entercontent=TextEditingController();
+
+Future<dynamic>addnotification()async{
+  await FirebaseFirestore.instance.collection('notifications').add({
+    "matter":entermatter.text,
+    "content":entercontent.text
+  }).then((value){
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      return Adminnotiii();
+    },));
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +57,7 @@ class _AdminaddnotiiiState extends State<Adminaddnotiii> {
               height: 55,
               color: Colors.white,
               child: TextFormField(
+                controller: entermatter,
                 decoration: InputDecoration(
                     hintText: '    Matter',
                     hintStyle: GoogleFonts.poppins(
@@ -67,8 +86,11 @@ class _AdminaddnotiiiState extends State<Adminaddnotiii> {
               height: 380,
               color: Colors.white,
               child: TextFormField(
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+                controller: entercontent,
                 decoration: InputDecoration(
-                    hintText: '    Content . . . .',
+                    hintText: '    ',
                     hintStyle: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w300,
@@ -87,7 +109,7 @@ class _AdminaddnotiiiState extends State<Adminaddnotiii> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.pop(context);
+                    addnotification();
                   },
                   child: Container(
                     width: 200,

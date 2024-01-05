@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vehicle_repair/Admin%20add%20notification.dart';
@@ -20,42 +22,49 @@ class _AdminnotiiiState extends State<Adminnotiii> {
       ),
       body: Stack(
         children: [
-          ListView.builder(
-            itemBuilder: ((context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                child: Container(
-                  width: double.infinity,
-                  height: 110,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Heading',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: Colors.black),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying  . . . . .  ',
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 14,
-                                color: Colors.black),
-                          ),
-                        ]),
+          FutureBuilder(
+            future: FirebaseFirestore.instance.collection('notifications').get(),
+            builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
+              if(snapshot.connectionState==ConnectionState.waiting){
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if(snapshot.hasError){
+                return Center(child: Text('Error: ${snapshot.error}'),);
+              }
+              final adminniti=snapshot.data?.docs??[];
+            
+            return ListView.builder(
+              itemBuilder: ((context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                  child: Container(
+                    width: double.infinity,
+                    height: 110,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                             adminniti[index]['matter']
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              adminniti[index]['content']
+                            ),
+                          ]),
+                    ),
                   ),
-                ),
-              );
-            }),
-            itemCount: 10,
+                );
+              }),
+              itemCount: adminniti.length
+            );
+            }
           ),
           Padding(
             padding: const EdgeInsets.only(right: 30,bottom: 30),

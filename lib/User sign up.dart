@@ -22,11 +22,14 @@ class _UsersignupppState extends State<Usersignuppp> {
       "usernamr": Username.text,
       "phone number": phone.text,
       "Email": email.text,
-      "password": password.text
-    }).then((value){
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return UserMechaniclisttt();
-      },));
+      "password": password.text,
+      "status":0,
+    }).then((value) {
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return UserMechaniclisttt();
+        },
+      ));
     });
   }
 
@@ -207,11 +210,6 @@ class _UsersignupppState extends State<Usersignuppp> {
                 InkWell(
                   onTap: () {
                     sign();
-                    // Navigator.pushReplacement(context, MaterialPageRoute(
-                    //   builder: (context) {
-                    //     return UserMechaniclisttt();
-                    //   },
-                    // ));
                   },
                   child: Container(
                     width: 200,

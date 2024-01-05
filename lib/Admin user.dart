@@ -40,7 +40,7 @@ class _AdminuserrrState extends State<Adminuserrr> {
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return Adminuser222();
+                          return Adminuser222(id: user[index]['usernamr'],);
                         },
                       ));
                     },

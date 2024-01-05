@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vehicle_repair/Admin%20home.dart';
+import 'package:vehicle_repair/Admin%20login.dart';
 import 'package:vehicle_repair/Admin%20notification.dart';
 import 'package:vehicle_repair/Admin%20payment.dart';
 
@@ -12,7 +13,7 @@ class Adminavigationnn extends StatefulWidget {
 
 class _AdminavigationnnState extends State<Adminavigationnn> {
  int selectedindex=0;
-  static List abhinavv=[
+   var abhinavv=[
    Adminhomeee(),Adminpaymenttt(),
    Adminnotiii()
   ];
@@ -25,7 +26,9 @@ class _AdminavigationnnState extends State<Adminavigationnn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: abhinavv.elementAt(selectedindex),
+        body: Center(
+          child: abhinavv.elementAt(selectedindex),
+        ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Color(0xFF2357D9),
         unselectedItemColor: Colors.black,
