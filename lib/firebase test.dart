@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vehicle_repair/Admin%20login.dart';
 import 'package:vehicle_repair/firebase%20dataview.dart';
+import 'package:vehicle_repair/lib/admin/Admin_login.dart';
 
 class Firebaseee extends StatefulWidget {
   const Firebaseee({super.key});
@@ -21,7 +21,7 @@ class _FirebaseeeState extends State<Firebaseee> {
         .collection('users')
         .add({'text1': text1.text, 'text2': text2.text, 'text3': text3.text}).then((value){
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Adminloginnn();
+            return Adminlogin();
           },));
         });
   }
