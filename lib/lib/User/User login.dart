@@ -6,7 +6,6 @@ import 'package:vehicle_repair/lib/User/user_mech_request_list.dart';
 import 'package:vehicle_repair/lib/User/user_reqlist.dart';
 import 'package:vehicle_repair/lib/User/usersignup.dart';
 
-
 class Userlogin extends StatefulWidget {
   const Userlogin({super.key});
 
@@ -47,12 +46,14 @@ class _UserloginState extends State<Userlogin> {
           padding: const EdgeInsets.symmetric(horizontal: 51),
           child: ListView(
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/tow 1.png', fit: BoxFit.fill),
                 ],
               ),
-              Align(alignment: Alignment.center,
+              Align(
+                alignment: Alignment.center,
                 child: Text('LOGIN',
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w700,
@@ -182,7 +183,9 @@ class _UserloginState extends State<Userlogin> {
                   ),
                 ),
               ),
-              SizedBox(height: 15,),
+              SizedBox(
+                height: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -199,7 +202,7 @@ class _UserloginState extends State<Userlogin> {
                         },
                       ));
                     },
-                    child:  Text("Sign up",
+                    child: Text("Sign up",
                         style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w600,
                             fontSize: 15,

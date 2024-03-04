@@ -24,7 +24,7 @@ class _UsersignupState extends State<Usersignup> {
 
   bool passToggle = true;
 
-  String imageUrl = '';
+  String imageUrl='';
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +97,6 @@ class _UsersignupState extends State<Usersignup> {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Username";
-                  } else if (Username.text.length <= 5) {
-                    return "Username Length Should not be less\nthan 5 characters";
                   }
                 },
               ),
@@ -239,34 +237,36 @@ class _UsersignupState extends State<Usersignup> {
                   }
                 },
               ),
-              // IconButton(
-              //     onPressed: () async {
-              //       ImagePicker imagepicker = ImagePicker();
-              //       XFile? file = await imagepicker.pickImage(
-              //           source: ImageSource.camera);
-              //       print('${file?.path}');
-              //
-              //       if (file == null) return;
-              //       String uniqueFileName =
-              //           DateTime.now().microsecondsSinceEpoch.toString();
-              //
-              //       Reference referenceRoot =
-              //           FirebaseStorage.instance.ref();
-              //       Reference referenceDirImages =
-              //           referenceRoot.child('images');
-              //
-              //       Reference referenceImageToUpload =
-              //           referenceDirImages.child(uniqueFileName);
-              //
-              //       try {
-              //         await referenceImageToUpload
-              //             .putFile(File(file!.path));
-              //
-              //         imageUrl =
-              //             await referenceImageToUpload.getDownloadURL();
-              //       } catch (error) {}
-              //     },
-              //     icon: Icon(Icons.camera_enhance)),
+
+              //===================================================================================================================================================================
+
+              IconButton(
+                  onPressed: () async {
+                    ImagePicker imagePicker = ImagePicker();
+                    XFile? file =
+                        await imagePicker.pickImage(source: ImageSource.camera);
+                    print('${file?.path}');
+
+                    String uniqueFileName =
+                        DateTime.now().millisecondsSinceEpoch.toString();
+
+                    Reference referenceRoot = FirebaseStorage.instance.ref();
+                    Reference referenceDirImages =
+                        referenceRoot.child('images');
+                    Reference referenceImageToUpload =
+                        referenceDirImages.child(uniqueFileName);
+                    try {
+
+                      await referenceImageToUpload.putFile(File(file!.path));
+                      imageUrl=await referenceImageToUpload.getDownloadURL();
+
+                    } catch (error) {}
+                  },
+                  icon: Icon(Icons.camera_alt)),
+
+              //===================================================================================================================================================================
+
+
               SizedBox(
                 height: 50,
               ),
@@ -324,7 +324,8 @@ class _UsersignupState extends State<Usersignup> {
       'Phone': Phone.text,
       'Email': Email.text,
       'Password': Password.text,
-      'status': 0
+      'status': 0,
+      'image':imageUrl,
     });
   }
 }

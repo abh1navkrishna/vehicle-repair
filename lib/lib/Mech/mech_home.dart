@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vehicle_repair/lib/Mech/requestlist.dart';
 
 import 'Acceptedlist.dart';
-import 'mech_notification.dart';
+import 'Mech notification.dart';
 import 'mechedit_pr.dart';
 
 class Mech_home extends StatefulWidget {
@@ -14,22 +14,27 @@ class Mech_home extends StatefulWidget {
 }
 
 class _Mech_homeState extends State<Mech_home> {
-
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: 2,
-      child: Scaffold( backgroundColor: Colors.white,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+          backgroundColor: Colors.white,
           body: Padding(
             padding: const EdgeInsets.all(30),
             child: Column(
               children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(onTap:() {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return Mechedit();
-                      },));
-                    },
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Mechedit();
+                          },
+                        ));
+                      },
                       child: Container(
                         width: 50,
                         height: 50,
@@ -42,45 +47,48 @@ class _Mech_homeState extends State<Mech_home> {
                         ),
                       ),
                     ),
-
-                    InkWell(onTap:() {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return MechNotification();
-                      },));
-                    },
-                        child: IconButton(onPressed: (){}, icon:Icon(Icons.notification_add_rounded),))
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Mechnotification(),));
+                    }, icon: Icon(
+                      Icons.notifications_none,
+                      color: Colors.blueGrey[200],
+                      size: 30,
+                    ))
                   ],
                 ),
-                SizedBox(height: 40,),
+                SizedBox(
+                  height: 40,
+                ),
                 Center(
                   child: Container(
                     height: 50,
                     width: 300,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.grey[300]),
                     child: Container(
                       child: TabBar(
                         tabs: [
                           Tab(
-                            child: Text("Requests",style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Colors.black,
-                            )),
+                            child: Text("Requests",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                )),
                           ),
                           Tab(
-                            child: Text("Accepted",style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Colors.black,
-                            )),
+                            child: Text("Accepted",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                )),
                           ),
-
                         ],
                         indicator: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color.fromARGB(255, 192, 210, 224)
-                        ),
+                            color: Color.fromARGB(255, 192, 210, 224)),
                         dividerColor: Colors.transparent,
                         labelColor: Colors.white,
                         unselectedLabelColor: Colors.black,
@@ -89,21 +97,14 @@ class _Mech_homeState extends State<Mech_home> {
                     ),
                   ),
                 ),
-                const Expanded(child:
-                TabBarView(children: [Center(child:Requestlist() ),
-                  Center(child:Acceptedlists() )
-                ])
-                )
-
-
-
-
-
-
+                const Expanded(
+                    child: TabBarView(children: [
+                  Center(child: Requestlist()),
+                  Center(child: Acceptedlists())
+                ]))
               ],
             ),
-          )
-      ),
+          )),
     );
   }
 }

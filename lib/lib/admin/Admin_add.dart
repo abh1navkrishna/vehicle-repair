@@ -73,7 +73,6 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                   controller: entermatter,
@@ -143,13 +142,19 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                   onTap: () {
                     if (entermatter.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Enter Matter",style: TextStyle(color: Colors.red),),
+                        content: Text(
+                          "Enter Matter",
+                          style: TextStyle(color: Colors.red),
+                        ),
                         backgroundColor: Colors.black,
                         behavior: SnackBarBehavior.floating,
                       ));
                     } else if (entercontent.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Enter Content",style: TextStyle(color: Colors.red),),
+                        content: Text(
+                          "Enter Content",
+                          style: TextStyle(color: Colors.red),
+                        ),
                         backgroundColor: Colors.black,
                         behavior: SnackBarBehavior.floating,
                       ));
@@ -211,7 +216,9 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                   Text(
                     'Sent notification',
                     style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400,color: Colors.blueGrey),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.blueGrey),
                   ),
                   SizedBox(
                     height: 20,
@@ -226,7 +233,9 @@ class _Admin_add_notificationState extends State<Admin_add_notification> {
                         child: Text(
                           'Cancel',
                           style: GoogleFonts.poppins(
-                              fontSize: 14, fontWeight: FontWeight.bold,color: Colors.blueGrey[700]),
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey[700]),
                         ),
                       ),
                       InkWell(

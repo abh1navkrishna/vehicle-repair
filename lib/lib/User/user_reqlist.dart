@@ -1,123 +1,102 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'User_mechbill.dart';
-import '../Mech/mech_failed.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class User_Requestlist extends StatefulWidget {
-  const User_Requestlist({super.key});
+class UserMechreq extends StatefulWidget {
+  const UserMechreq({super.key});
 
   @override
-  State<User_Requestlist> createState() => _User_RequestlistState();
+  State<UserMechreq> createState() => _UserMechreqState();
 }
 
-class _User_RequestlistState extends State<User_Requestlist> {
+class _UserMechreqState extends State<UserMechreq> {
   @override
   Widget build(BuildContext context) {
-    // return
-    return StreamBuilder(
-      stream:FirebaseFirestore.instance.collection('Userreq').where('status',whereIn: [3,4,5]).snapshots(),
-      builder: (context, snapshot) {
-        final user= snapshot.data?.docs??[];
-        return ListView.builder(
-          itemCount: user.length,
-          itemBuilder:(context, index) {
-            return Container(
-                height: 130,
-                width: double.infinity,
-                decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 192, 210, 224)),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('${user[index]['name']}'),
-                          Text(''),
-                          Text('${user[index]['place']}'),
-                          Text('${user[index]['service']}')
-                        ],
-                      ),
-                      Row(
+    return Scaffold(
+      backgroundColor: Colors.blueGrey[900],
+      body: FutureBuilder(
+          future: FirebaseFirestore.instance.collection('Userreq').get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            }
+            final userreq = snapshot.data?.docs ?? [];
+            return ListView.builder(
+              itemCount: userreq.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Expanded(
+                    child: Container(
+                      width: 322,
+                     
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 5.0,
+                                offset: const Offset(0.0, 5.0)),
+                          ],
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blueGrey[700]),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            user[index]['status'] == 3
-                                ?Row(mainAxisAlignment: MainAxisAlignment.center,
+                            Text(userreq[index]['name'],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                )),
+                            Text("Service  :  ${userreq[index]['service']}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                )),
+                            Text("Place     :  ${userreq[index]['place']}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                InkWell(
-                                  onTap:() {
-                                    Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => User_mechbill(id: user[index].id, name: user[index]['name'],exp: user[index]['exp'],),));
-                                  },
-                                  child: Container(
-                                    height: 30,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Colors.green),
-                                    child: Center(child: Text(
-                                      'pay',style:TextStyle(
-                                        color: Colors.white),
-                                    ),
-                                    ),
-                                  ),
-                                )
+                                Text(
+                                  userreq[index]['date'],
+                                  style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.blueGrey[200]),
+                                ),
+                                Text(
+                                  userreq[index]['Time'],
+                                  style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.blueGrey[200]),
+                                ),
                               ],
-                            ):user[index]['status'] ==4
-                                ?Container(
-                              height: 30,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.green),
-                              child: Center(
-                                child: Text("Approved",style:TextStyle(color: Colors.white),),
-
-                              ),
                             )
-                                :user[index]['status'] == 5
-                                ? InkWell(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                                      Mech_failed(id: user[index].id),));
-                                },
-                                child: Container(
-                                    height: 30,
-                                    width: 100,
-
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color:
-                                        const Color.fromARGB(
-                                            255, 175, 120, 76)),
-                                    child: Center(
-                                      child: Text(
-                                        "Failed",
-                                        style: TextStyle(
-                                            color: Colors.white),
-                                      ),
-                                    )
-                                )
-
-                            )
-                                :Text('error')
-                          ]
-                      )
-
-
-
-                    ]
-                )
-
-
-
-
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
             );
-
-          },);
-      },);
+          }),
+    );
   }
 }
-
-
-
-
